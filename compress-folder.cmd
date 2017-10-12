@@ -159,6 +159,7 @@ echo *.rdl          >> %INCLUSIONS_FILENAME%
 echo *.rdlc         >> %INCLUSIONS_FILENAME%
 echo *.rptproj      >> %INCLUSIONS_FILENAME%
 echo *.settings     >> %INCLUSIONS_FILENAME%
+echo *.shfbproj    >> %INCLUSIONS_FILENAME%
 echo *.sql          >> %INCLUSIONS_FILENAME%
 echo *.sqlproj      >> %INCLUSIONS_FILENAME%
 echo *.svg          >> %INCLUSIONS_FILENAME%
