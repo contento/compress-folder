@@ -152,6 +152,8 @@ echo *.png          >> %INCLUSIONS_FILENAME%
 echo *.psproj       >> %INCLUSIONS_FILENAME%
 echo *.ps1          >> %INCLUSIONS_FILENAME%
 echo *.pfx          >> %INCLUSIONS_FILENAME%
+echo *.ppt          >> %INCLUSIONS_FILENAME%
+echo *.pptx         >> %INCLUSIONS_FILENAME%
 echo *.pubxml       >> %INCLUSIONS_FILENAME%
 echo *.pvk          >> %INCLUSIONS_FILENAME%
 echo *.resx         >> %INCLUSIONS_FILENAME%
