@@ -161,7 +161,7 @@ echo *.rdl          >> %INCLUSIONS_FILENAME%
 echo *.rdlc         >> %INCLUSIONS_FILENAME%
 echo *.rptproj      >> %INCLUSIONS_FILENAME%
 echo *.settings     >> %INCLUSIONS_FILENAME%
-echo *.shfbproj    >> %INCLUSIONS_FILENAME%
+echo *.shfbproj     >> %INCLUSIONS_FILENAME%
 echo *.sql          >> %INCLUSIONS_FILENAME%
 echo *.sqlproj      >> %INCLUSIONS_FILENAME%
 echo *.svg          >> %INCLUSIONS_FILENAME%
@@ -182,6 +182,7 @@ echo *.xml          >> %INCLUSIONS_FILENAME%
 echo *.xaml         >> %INCLUSIONS_FILENAME%
 echo *.xsd          >> %INCLUSIONS_FILENAME%
 echo *.xsl*         >> %INCLUSIONS_FILENAME%
+echo *.yaml         >> %INCLUSIONS_FILENAME%
 echo yarn.lock      >> %INCLUSIONS_FILENAME%
     
 :: Exclusions
