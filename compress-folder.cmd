@@ -147,6 +147,7 @@ echo *.map          >> %INCLUSIONS_FILENAME%
 echo *.md           >> %INCLUSIONS_FILENAME%
 echo *.mpp          >> %INCLUSIONS_FILENAME%
 echo *.nuspec       >> %INCLUSIONS_FILENAME%
+echo Pipfile        >> %INCLUSIONS_FILENAME%
 echo *.pk*          >> %INCLUSIONS_FILENAME%
 echo *.png          >> %INCLUSIONS_FILENAME%
 echo *.psproj       >> %INCLUSIONS_FILENAME%
@@ -156,6 +157,7 @@ echo *.ppt          >> %INCLUSIONS_FILENAME%
 echo *.pptx         >> %INCLUSIONS_FILENAME%
 echo *.pubxml       >> %INCLUSIONS_FILENAME%
 echo *.pvk          >> %INCLUSIONS_FILENAME%
+echo *.py           >> %INCLUSIONS_FILENAME%
 echo *.resx         >> %INCLUSIONS_FILENAME%
 echo *.rdl          >> %INCLUSIONS_FILENAME%
 echo *.rdlc         >> %INCLUSIONS_FILENAME%
