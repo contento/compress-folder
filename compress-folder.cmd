@@ -151,7 +151,7 @@ echo Pipfile        >> %INCLUSIONS_FILENAME%
 echo *.pk*          >> %INCLUSIONS_FILENAME%
 echo *.png          >> %INCLUSIONS_FILENAME%
 echo *.psproj       >> %INCLUSIONS_FILENAME%
-echo *.ps1          >> %INCLUSIONS_FILENAME%
+echo *.ps*1         >> %INCLUSIONS_FILENAME%
 echo *.pfx          >> %INCLUSIONS_FILENAME%
 echo *.ppt          >> %INCLUSIONS_FILENAME%
 echo *.pptx         >> %INCLUSIONS_FILENAME%
