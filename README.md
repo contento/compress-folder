@@ -12,8 +12,6 @@ Dependencies:
 compress-folder[.cmd] [--dev]
 ```    
 
-> Options:
-
 > --dev: use dynamic list of inclusions and exclusions for developers
   
 ## Inclusions/Exclussions
