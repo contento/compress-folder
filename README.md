@@ -6,11 +6,13 @@ Version: 1.0.0
 Dependencies: 
 - 7Zip: [http://www.7-zip.org/](http://www.7-zip.org/)
 
-# Syntax
+## Syntax
 
-    compress-folder[.cmd] [--dev]
-		--dev: use dynamic list of inclusions and exclusions for developers
-        
+```shell
+compress-folder[.cmd] [--dev]
+
+Options:
+--dev: use dynamic list of inclusions and exclusions for developers
+ ```    
     
-> Please check **compress-folder.cmd** for list of inclusions and exclusions. 
-
+> Please check [compress-folder.cmd](./compress-folder.cmd) for list of inclusions and exclusions. 
