@@ -201,5 +201,6 @@ echo *.suo          >> %EXCLUSIONS_FILENAME%
 echo .svn           >> %EXCLUSIONS_FILENAME%
 echo *.user         >> %EXCLUSIONS_FILENAME%
 echo *.vs           >> %EXCLUSIONS_FILENAME%
+echo venv           >> %EXCLUSIONS_FILENAME%
 
 goto:eof
