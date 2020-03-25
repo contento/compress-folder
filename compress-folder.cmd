@@ -140,6 +140,7 @@ echo *.ini          >> %INCLUSIONS_FILENAME%
 echo *.jpg          >> %INCLUSIONS_FILENAME%
 echo *.js           >> %INCLUSIONS_FILENAME%
 echo *.json         >> %INCLUSIONS_FILENAME%
+echo *.jmx          >> %INCLUSIONS_FILENAME%
 echo *.licx         >> %INCLUSIONS_FILENAME%
 echo license        >> %INCLUSIONS_FILENAME%
 echo *.manifest     >> %INCLUSIONS_FILENAME%
