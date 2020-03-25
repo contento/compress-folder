@@ -195,9 +195,11 @@ echo dist           >> %EXCLUSIONS_FILENAME%
 echo *.dotsettings  >> %EXCLUSIONS_FILENAME%
 echo .git           >> %EXCLUSIONS_FILENAME%
 echo lib            >> %EXCLUSIONS_FILENAME%
+echo logs           >> %EXCLUSIONS_FILENAME%
 echo obj            >> %EXCLUSIONS_FILENAME%
 echo node_modules   >> %EXCLUSIONS_FILENAME%
 echo packages       >> %EXCLUSIONS_FILENAME%
+echo reports        >> %EXCLUSIONS_FILENAME%
 echo *.suo          >> %EXCLUSIONS_FILENAME%
 echo .svn           >> %EXCLUSIONS_FILENAME%
 echo *.user         >> %EXCLUSIONS_FILENAME%
