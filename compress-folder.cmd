@@ -137,6 +137,7 @@ echo *.h            >> %INCLUSIONS_FILENAME%
 echo *.htm*         >> %INCLUSIONS_FILENAME%  
 echo *.ico          >> %INCLUSIONS_FILENAME%
 echo *.ini          >> %INCLUSIONS_FILENAME%
+echo *.ipynb        >> %INCLUSIONS_FILENAME%
 echo *.jpg          >> %INCLUSIONS_FILENAME%
 echo *.js           >> %INCLUSIONS_FILENAME%
 echo *.json         >> %INCLUSIONS_FILENAME%
