@@ -171,6 +171,7 @@ echo *.sql          >> %INCLUSIONS_FILENAME%
 echo *.sqlproj      >> %INCLUSIONS_FILENAME%
 echo *.svg          >> %INCLUSIONS_FILENAME%
 echo *.targets      >> %INCLUSIONS_FILENAME%
+echo *.tif          >> %INCLUSIONS_FILENAME%
 echo *.ts           >> %INCLUSIONS_FILENAME%
 echo *.tt           >> %INCLUSIONS_FILENAME%
 echo *.ttf          >> %INCLUSIONS_FILENAME%
