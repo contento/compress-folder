@@ -122,6 +122,7 @@ echo *.cs           >> %INCLUSIONS_FILENAME%
 echo *.css          >> %INCLUSIONS_FILENAME%
 echo *.cshtml       >> %INCLUSIONS_FILENAME%
 echo *.csproj       >> %INCLUSIONS_FILENAME% 
+echo *.csv          >> %INCLUSIONS_FILENAME% 
 echo *.dbml         >> %INCLUSIONS_FILENAME% 
 echo *.dbp          >> %INCLUSIONS_FILENAME%
 echo *.doc          >> %INCLUSIONS_FILENAME%
