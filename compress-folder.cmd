@@ -94,7 +94,12 @@ goto :end
 goto:eof
 
 :end
-echo. "%FILENAME%" created & pause
+
+echo. "%FILENAME%" created 
+
+if "%2p"=="--pausep" (
+    pause
+)
     
 goto:eof
 
