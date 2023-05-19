@@ -11,7 +11,7 @@ Dependencies:
 ## Syntax
 
 ```shell
-compress-folder[.cmd] [--dev]
+compress-folder[.cmd] [--dev] [--pause]
 ```
 
 > --dev: use dynamic list of inclusions and exclusions for developers
