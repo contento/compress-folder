@@ -35,9 +35,9 @@ exit /b
 
 :compressorFound
 for /f "tokens=2,3,4 delims=/ " %%I in ("%date%") do (
-    set YYYY="%%K"
-    set MM="%%I"
-    set DD="%%J"
+    set YYYY=%%K
+    set MM=%%I
+    set DD=%%J
 )
 
 for /f "tokens=1,2,3 delims=:." %%I in ("%time: =0%") do (
@@ -46,10 +46,10 @@ for /f "tokens=1,2,3 delims=:." %%I in ("%time: =0%") do (
     set S=%%K
 )
 
-for /F "delims=\" %%I in ("%CD%") do set "FOLDER_NAME=%%~nxi"
-set "FILE_PATH=%BACKUP_PATH%\%FOLDER_NAME%"
-set "FILENAME=%FILE_PATH%\%FOLDER_NAME%_%YYYY%-%MM%-%DD%_%H%.%M%.%S%.%COMPRESSOR_EXT%"
-set "EXE_FILENAME=%FILE_PATH%\%FOLDER_NAME%_%YYYY%-%MM%-%DD%_%H%.%M%.%S%.exe"
+for /F "delims=\" %%I in ("%CD%") do set FOLDER_NAME=%%~nxI
+
+set FILE_PATH=%BACKUP_PATH%\%FOLDER_NAME%
+set FILENAME=%FILE_PATH%\%FOLDER_NAME%_%YYYY%-%MM%-%DD%_%H%.%M%.%S%.%COMPRESSOR_EXT%
 
 :: create backup folder
 if not exist "%FILE_PATH%" mkdir "%FILE_PATH%"
