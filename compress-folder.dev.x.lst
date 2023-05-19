@@ -1,0 +1,15 @@
+bin            
+dist           
+*.dotsettings  
+.git           
+lib            
+logs           
+obj            
+node_modules   
+packages       
+reports        
+*.suo          
+.svn           
+*.user         
+*.vs           
+venv           
