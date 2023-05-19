@@ -14,15 +14,18 @@
 
 setlocal enabledelayedexpansion enableextensions
 
-set "BACKUP_PATH=c:\backup"
-set "COMPRESSOR_NAME=7Z"
-set "COMPRESSOR_EXT=7z"
-set "PARTIAL_COMPRESSOR_PATH=7-zip\%COMPRESSOR_NAME%.exe"
-set "COMPRESSOR="
+set BACKUP_PATH=c:\backup
+set COMPRESSOR_NAME=7Z
+set COMPRESSOR_EXT=7z
+set PARTIAL_COMPRESSOR_PATH=7-zip\%COMPRESSOR_NAME%.exe
+set COMPRESSOR=
 
-for %%I in (c:\Util %ProgramFiles% %ProgramFiles(x86)% %ProgramW6432%) do (
+set INCLUSIONS_FILENAME="%~dp0\compress-folder.dev.i.lst"
+set EXCLUSIONS_FILENAME="%~dp0\compress-folder.dev.x.lst"
+
+for %%I in ("c:\Util" "%ProgramFiles%" "%ProgramFiles(x86)%" "%ProgramW6432%") do (
     if exist "%%I\%PARTIAL_COMPRESSOR_PATH%" (
-        set "COMPRESSOR=%%I\%PARTIAL_COMPRESSOR_PATH%"
+        set COMPRESSOR="%%I\%PARTIAL_COMPRESSOR_PATH%"
         goto compressorFound
     )
 )
@@ -32,15 +35,15 @@ exit /b
 
 :compressorFound
 for /f "tokens=2,3,4 delims=/ " %%I in ("%date%") do (
-    set "YYYY=%%K"
-    set "MM=%%I"
-    set "DD=%%J"
+    set YYYY="%%K"
+    set MM="%%I"
+    set DD="%%J"
 )
 
 for /f "tokens=1,2,3 delims=:." %%I in ("%time: =0%") do (
-    set "H=%%I"
-    set "M=%%J"
-    set "S=%%K"
+    set H=%%I
+    set M=%%J
+    set S=%%K
 )
 
 for /F "delims=\" %%I in ("%CD%") do set "FOLDER_NAME=%%~nxi"
@@ -66,30 +69,5 @@ if /i "%~1" == "--dev" (
 echo "%FILENAME%" created 
 
 if /i "%~2" == "--pause" pause
-
-exit /b
-
-:createDevFileLists
-set "INCLUSIONS_FILENAME=%TEMP%\compress-folder.dev.i.lst"
-set "EXCLUSIONS_FILENAME=%TEMP%\compress-folder.dev.x.lst"
-
-:: Inclusions
-for %%I in (
-    asax asmx aspx bat bdcm bmp cer cmd config c cpp cs css cshtml csproj csv dbml dbp
-    doc docx eap *config edmx eot gif gitignore gitkeep h htm* ico ini ipynb jpg js json
-    jmx licx license manifest map md mpp nuspec Pipfile pk* png psproj ps*1 pfx ppt pptx
-    pubxml puml pvk py resx rdl rdlc rptproj settings shfbproj sql sqlproj svg targets tif
-    ts tt ttf txt pdf sln svc tfignore vbs woff* xls xlsx xml xaml xsd xsl* yaml yarn.lock
-) do (
-    echo *%%I>>"%INCLUSIONS_FILENAME%"
-)
-
-:: Exclusions
-for %%I in (
-    bin dist *.dotsettings .git lib logs obj node_modules packages reports *.suo .svn *.user
-    *.vs venv
-) do (
-    echo %%I>>"%EXCLUSIONS_FILENAME%"
-)
 
 exit /b
