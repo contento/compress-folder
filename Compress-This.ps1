@@ -47,17 +47,18 @@ if (-not $COMPRESSOR) {
 }
 
 # Get Current Date and Time
-$YYYY = (Get-Date).Year
-$MM = (Get-Date).Month
-$DD = (Get-Date).Day
-$H = (Get-Date).Hour
-$M = (Get-Date).Minute
-$S = (Get-Date).Second
+$now = Get-Date
+$YYYY = $now.ToString("yyyy")
+$MM = $now.ToString("MM")
+$DD = $now.ToString("dd")
+$H = $now.ToString("HH")
+$M = $now.ToString("mm")
+$S = $now.ToString("ss")
 
 # Get Current Folder Name, Build File Path
 $FOLDER_NAME = Split-Path -Path $PWD -Leaf
 $FILE_PATH = Join-Path -Path $BACKUP_PATH -ChildPath $FOLDER_NAME
-$FILENAME = Join-Path -Path $FILE_PATH -ChildPath "$($FOLDER_NAME)_$YYYY-$MM-$DD_$H.$M.$S.$COMPRESSOR_EXT"
+$FILENAME = Join-Path -Path $FILE_PATH -ChildPath "$($FOLDER_NAME)_$YYYY-$MM-$($DD)_$H.$M.$S.$COMPRESSOR_EXT"
 
 # create backup folder
 if (!(Test-Path -Path $FILE_PATH)) {
@@ -71,7 +72,6 @@ Write-Output "To: $FILENAME"
 
 if ($dev) {
     # Compress based on dev list of inclusions and exclusions
-    CreateDevFileLists
     & $COMPRESSOR a -mx9 -ir@"$INCLUSIONS_FILENAME" "$FILENAME" -xr@"$EXCLUSIONS_FILENAME"
 }
 else {
