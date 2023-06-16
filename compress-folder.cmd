@@ -1,73 +1,82 @@
-@echo off
-:: compress-folder.cmd
-:: 7zip current folder.
-::
-:: * Syntax:
-:: compress-folder [--dev] [--pause]
-::  - dev: create 7zip file based on inclusion/exclusion lists.
-::  - pause: use `pause` command.
-::
-:: https://github.com/contento/compress-folder.git
-:: Author : Gonzalo Contento
-:: Version: 2.0.0
-:: Date   : 2023-05-19
+<#
+.SYNOPSIS
+	Compress the current folder
+.DESCRIPTION
+	Compress the current folder
+.INPUTS
+	None
+.OUTPUTS
+	None
+.NOTES
+	None
+.EXAMPLE
+	Compress-This -Dev
+#>
 
-setlocal enabledelayedexpansion enableextensions
-
-set BACKUP_PATH=c:\backup
-set COMPRESSOR_NAME=7Z
-set COMPRESSOR_EXT=7z
-set PARTIAL_COMPRESSOR_PATH=7-zip\%COMPRESSOR_NAME%.exe
-set COMPRESSOR=
-
-set INCLUSIONS_FILENAME="%~dp0\compress-folder.dev.i.lst"
-set EXCLUSIONS_FILENAME="%~dp0\compress-folder.dev.x.lst"
-
-for %%I in ("c:\Util" "%ProgramFiles%" "%ProgramFiles(x86)%" "%ProgramW6432%") do (
-    if exist "%%I\%PARTIAL_COMPRESSOR_PATH%" (
-        set COMPRESSOR="%%I\%PARTIAL_COMPRESSOR_PATH%"
-        goto compressorFound
-    )
+Param(
+    [switch]$Dev = $false,
+    [string]$BACKUP_PATH = "c:/backup",
+    [string]$COMPRESSOR_NAME = "7z",
+    [string]$COMPRESSOR_EXT = "7z",
+    [string]$INCLUSIONS_FILENAME = "$PSScriptRoot\compress-folder.dev.i.lst",
+    [string]$EXCLUSIONS_FILENAME = "$PSScriptRoot\compress-folder.dev.x.lst"
 )
 
-echo Error: '%COMPRESSOR_NAME%' does not exist!
-exit /b
+$PARTIAL_COMPRESSOR_PATH = "7-zip/$($COMPRESSOR_NAME).exe"
 
-:compressorFound
-for /f "tokens=2,3,4 delims=/ " %%I in ("%date%") do (
-    set YYYY=%%K
-    set MM=%%I
-    set DD=%%J
-)
+if (!(Test-Path -Path $BACKUP_PATH)) {
+    Write-Output "Backup path does not exist"
+    exit
+}
 
-for /f "tokens=1,2,3 delims=:." %%I in ("%time: =0%") do (
-    set H=%%I
-    set M=%%J
-    set S=%%K
-)
+$COMPRESSOR = $null
+try {
+    @( "c:\Tools", $env:ProgramFiles, "$env:ProgramFiles(x86)", $env:ProgramW6432 ) | ForEach-Object {
+        $path = Join-Path -Path $_ -ChildPath $PARTIAL_COMPRESSOR_PATH
+        if (Test-Path -Path $path) { 
+            $COMPRESSOR = $path
+            throw # AWFUL: but I don't know better
+        }
+    }
+}
+catch {}
 
-for /F "delims=\" %%I in ("%CD%") do set FOLDER_NAME=%%~nxI
+if (-not $COMPRESSOR) {
+    Write-Output "Error: '$COMPRESSOR_NAME' does not exist!"
+    exit
+}
 
-set FILE_PATH=%BACKUP_PATH%\%FOLDER_NAME%
-set FILENAME=%FILE_PATH%\%FOLDER_NAME%_%YYYY%-%MM%-%DD%_%H%.%M%.%S%.%COMPRESSOR_EXT%
+# Get Current Date and Time
+$now = Get-Date
+$YYYY = $now.ToString("yyyy")
+$MM = $now.ToString("MM")
+$DD = $now.ToString("dd")
+$H = $now.ToString("HH")
+$M = $now.ToString("mm")
+$S = $now.ToString("ss")
 
-:: create backup folder
-if not exist "%FILE_PATH%" mkdir "%FILE_PATH%"
+# Get Current Folder Name, Build File Path
+$FOLDER_NAME = Split-Path -Path $PWD -Leaf
+$FILE_PATH = Join-Path -Path $BACKUP_PATH -ChildPath $FOLDER_NAME
+$FILENAME = Join-Path -Path $FILE_PATH -ChildPath "$($FOLDER_NAME)_$YYYY-$MM-$($DD)_$H.$M.$S.$COMPRESSOR_EXT"
 
-echo Compressing 
-echo  Folder: "%CD%"
-echo  To:     "%FILENAME%" 
-echo ----------------------------------
+# create backup folder
+if (!(Test-Path -Path $FILE_PATH)) {
+    New-Item -ItemType Directory -Path $FILE_PATH | Out-Null
+}
 
-if /i "%~1" == "--dev" (
-    call :createDevFileLists
-    "%COMPRESSOR%" a -mx9 -ir@"%INCLUSIONS_FILENAME%" "%FILENAME%" -xr@"%EXCLUSIONS_FILENAME%"
-) else (
-    "%COMPRESSOR%" a -mx9 -ir!* "%FILENAME%"
-)
+# Do it
+Write-Output "Compressing"
+Write-Output "Folder: $PWD"
+Write-Output "To: $FILENAME"
 
-echo "%FILENAME%" created 
+if ($dev) {
+    # Compress based on dev list of inclusions and exclusions
+    & $COMPRESSOR a -mx9 -ir@"$INCLUSIONS_FILENAME" "$FILENAME" -xr@"$EXCLUSIONS_FILENAME"
+}
+else {
+    # Compress all
+    & $COMPRESSOR a -mx9 -ir!* "$FILENAME"
+}
 
-if /i "%~2" == "--pause" pause
-
-exit /b
+Write-Output "$FILENAME created"
