@@ -35,12 +35,15 @@
 *.json         
 *.jmx          
 *.licx         
-license        
+license  
+*.m
+*.mlx      
 *.manifest     
 *.map          
 *.md           
 *.mpp          
-*.nuspec       
+*.nuspec  
+*.pddl     
 Pipfile        
 *.pk*          
 *.png          
@@ -62,7 +65,8 @@ Pipfile
 *.sql          
 *.sqlproj      
 *.svg          
-*.targets      
+*.targets   
+*.tex   
 *.tif          
 *.ts           
 *.tt           
