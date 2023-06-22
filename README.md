@@ -4,7 +4,7 @@ Windows script to compress a folder and copy the resulting 7zip file to a backup
 
 Version: 1.0.0
 
-Dependencies:
+## Dependencies:
 
 * [7Zip](http://www.7-zip.org/)
 
@@ -15,7 +15,7 @@ compress-folder[.cmd] [--dev] [--pause]
   # --dev: use dynamic list of inclusions and exclusions for developers
   # --pause: a pause in the console
 
-``
+```
 
 ## Inclusions/Exclusions
 
@@ -32,7 +32,7 @@ Allow me to tell you that: yes! I have redesigned and over-engineered this proje
 
 I am not necessarily proud but the fact that some people (read: me) have mentioned to me (in private) that over the years this script was a source of mental tranquility is enough to keep it in GitHub as a statement of "I am still a humble script programmer".
 
-One of these days I will execute the below TODO list:
+One of these days I will execute the TODO list:
 
 ### TODO :-)
 
