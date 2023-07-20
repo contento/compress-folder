@@ -15,7 +15,7 @@
 
 Param(
     [switch]$Dev = $false,
-    [string]$BACKUP_PATH = "c:/backup",
+    [string]$BACKUP_PATH = "c:/backup/compressed",
     [string]$COMPRESSOR_NAME = "7z",
     [string]$COMPRESSOR_EXT = "7z",
     [string]$INCLUSIONS_FILENAME = "$PSScriptRoot\compress-folder.dev.i.lst",
@@ -33,7 +33,7 @@ $COMPRESSOR = $null
 try {
     @( "c:\Tools", $env:ProgramFiles, "$env:ProgramFiles(x86)", $env:ProgramW6432 ) | ForEach-Object {
         $path = Join-Path -Path $_ -ChildPath $PARTIAL_COMPRESSOR_PATH
-        if (Test-Path -Path $path) { 
+        if (Test-Path -Path $path) {
             $COMPRESSOR = $path
             throw # AWFUL: but I don't know better
         }

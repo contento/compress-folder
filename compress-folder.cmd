@@ -14,7 +14,7 @@
 
 setlocal enabledelayedexpansion enableextensions
 
-set BACKUP_PATH=c:\backup
+set BACKUP_PATH=c:\backup\compressed
 set COMPRESSOR_NAME=7Z
 set COMPRESSOR_EXT=7z
 set PARTIAL_COMPRESSOR_PATH=7-zip\%COMPRESSOR_NAME%.exe
@@ -54,18 +54,18 @@ set FILENAME=%FILE_PATH%\%FOLDER_NAME%_%YYYY%-%MM%-%DD%_%H%.%M%.%S%.%COMPRESSOR_
 :: create backup folder
 if not exist "%FILE_PATH%" mkdir "%FILE_PATH%"
 
-echo Compressing 
+echo Compressing
 echo  Folder: "%CD%"
-echo  To:     "%FILENAME%" 
+echo  To:     "%FILENAME%"
 echo ----------------------------------
 
 if /i "%~1" == "--dev" (
     "%COMPRESSOR%" a -mx9 -ir@"%INCLUSIONS_FILENAME%" "%FILENAME%" -xr@"%EXCLUSIONS_FILENAME%"
 ) else (
-    "%COMPRESSOR%" a -mx9 -ir!* "%FILENAME%"
+   "%COMPRESSOR%" a -mx9 %FILENAME%
 )
 
-echo "%FILENAME%" created 
+echo "%FILENAME%" created
 
 if /i "%~2" == "--pause" pause
 
