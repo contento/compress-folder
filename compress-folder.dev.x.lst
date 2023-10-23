@@ -13,3 +13,4 @@ reports
 *.user         
 *.vs           
 venv           
+.venv
