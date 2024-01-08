@@ -15,6 +15,7 @@
 
 Param(
     [switch]$Dev = $false,
+    [switch]$Pause = $false,  
     [string]$BACKUP_PATH = "c:/backup/compressed",
     [string]$COMPRESSOR_NAME = "7z",
     [string]$COMPRESSOR_EXT = "7z",
@@ -80,3 +81,9 @@ else {
 }
 
 Write-Output "$FILENAME created"
+
+if ($Pause) {
+    Write-Host "Press any key to continue..."
+    $null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
+}
+
