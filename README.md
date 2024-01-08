@@ -4,16 +4,16 @@ Windows script to compress a folder and copy the resulting 7zip file to a backup
 
 Version: 2.0.0
 
-## Dependencies:
+## Dependencies
 
 * [7Zip](http://www.7-zip.org/)
 
 ## Syntax
 
 ```shell
-compress-folder[.cmd] [--dev] [--pause]
-  # --dev: use dynamic list of inclusions and exclusions for developers
-  # --pause: a pause in the console
+./Compress-This.ps1 [-Dev] [-Pause]
+  # -Dev: use dynamic list of inclusions and exclusions for developers
+  # -Pause: a pause in the console
 
 ```
 
@@ -26,7 +26,7 @@ Please check:
 
 ## Disclaimer (Honest one)
 
-I know! This is not the best solution, specially if you think of the wonderful capabilities of various scripting languages and platforms such as PowerShell Core.
+I know! This is no [DONE]
 
 Allow me to tell you that: yes! I have redesigned and over-engineered this project so many times in the last 25 years just to find that some people only cares about quick and dirty solutions.
 

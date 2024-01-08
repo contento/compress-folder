@@ -1,5 +1,4 @@
 [string[]]$Files = @(
-  "compress-folder.cmd",
   "Compress-This.ps1",
   "compress-folder.dev.i.lst",
   "compress-folder.dev.x.lst"
